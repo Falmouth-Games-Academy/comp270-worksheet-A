@@ -1,6 +1,10 @@
 #pragma once
 
 #include "Vector2.h"
+#include <vector>
+
+// Number of curves to use when creating the bezier i.e. smoothness
+#define CURVES 20
 
 class Bezier
 {
@@ -9,20 +13,23 @@ public:
 
 	void draw(SDL_Renderer *renderer) const;
 
-	// Setter and getter for bezier smoothness
-	void setSmoothness(const unsigned int to)
-	{
-		if (to > 0)
-			bezierSmoothness = to;
-	}
-	unsigned int getSmoothness()
-	{
-		return bezierSmoothness;
-	}
-
 private:
 	Vector2 p0, p1, p2, p3;
 
-	// Number of lines the curve should be comprised of
-	static unsigned int bezierSmoothness;
+	// Points forming the curve
+	SDL_Point points[CURVES + 1];
+
+	// Calculate position along bezier curve based on range 0-1
+	Vector2 getPosAlongBezier(float t);
+
+	// Utility function for converting from Vector2 to SDL_Point
+	static SDL_Point Vec2toSDLPoint(const Vector2& in)
+	{
+		SDL_Point out = SDL_Point();
+
+		out.x = in.x;
+		out.y = in.y;
+
+		return out;
+	}
 };
