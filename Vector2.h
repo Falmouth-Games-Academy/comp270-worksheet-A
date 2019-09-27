@@ -37,6 +37,11 @@ public:
 	{
 		return sqrtf(x * x + y * y);
 	}
+
+	Vector2 normalized()
+	{
+		return Vector2(this->x / this->magnitude(), this->y / this->magnitude());
+	}
 };
 
 // Scalar multiplication operator (scalar * vector)
