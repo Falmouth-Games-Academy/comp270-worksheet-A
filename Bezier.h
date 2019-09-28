@@ -26,6 +26,8 @@ public:
 			return Vector2();
 	}
 
+	static int curves() { return CURVES; }
+
 private:
 	Vector2 p0, p1, p2, p3;
 
