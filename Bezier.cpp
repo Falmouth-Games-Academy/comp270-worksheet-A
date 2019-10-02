@@ -30,6 +30,15 @@ void Bezier::draw(SDL_Renderer *renderer) const
 
 }
 
+Vector2 Bezier::GetVectorPosition(float percent)
+{
+	Vector2 vectorPosition = Vector2();
+
+	vectorPosition = pow((1 - percent), 3)*p0 + 3 * pow((1 - percent), 2)*percent*p1 + 3 * (1 - percent) * pow(percent, 2) * p2 + pow(percent, 3) * p3;
+
+	return vectorPosition;
+}
+
 SDL_Point Bezier::ConvertVector2(Vector2 vector)
 {
 	SDL_Point point = SDL_Point();
@@ -44,7 +53,7 @@ SDL_Point Bezier::FindPosition(float percent)
 {
 	Vector2 vectorPosition = Vector2();
 
-	vectorPosition = pow((1 - percent), 3)*p0 + 3*pow((1 - percent),2)*percent*p1 + 3 *(1 - percent) * pow(percent,2) * p2 + pow(percent,3) * p3;
+	vectorPosition = GetVectorPosition(percent);
 
 	SDL_Point pointPosition = ConvertVector2(vectorPosition);
 
