@@ -9,7 +9,7 @@ public:
 
 	void draw(SDL_Renderer *renderer) const;
 
-	int GetPrecision() { return precision; }
+	static int GetPrecision() { return precision; }
 
 	Vector2 GetVectorPosition(float percent);
 
