@@ -9,6 +9,9 @@ public:
 
 	void draw(SDL_Renderer *renderer) const;
 
+	Vector2 FindPFinal(float t, Vector2 p) const;
+
 private:
 	Vector2 p0, p1, p2, p3;
+	int segments = 20;
 };
