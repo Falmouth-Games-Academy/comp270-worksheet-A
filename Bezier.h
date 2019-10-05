@@ -11,6 +11,8 @@ public:
 
 	Vector2 FindPFinal(float t, Vector2 p) const;
 
+	Vector2 FindTangent(float t, Vector2 tangent) const;
+
 private:
 	Vector2 p0, p1, p2, p3;
 	int segments = 20;
