@@ -9,4 +9,6 @@ Bezier::Bezier(const Vector2& p0, const Vector2& p1, const Vector2& p2, const Ve
 void Bezier::draw(SDL_Renderer *renderer) const
 {
 	// TODO
+
+	SDL_RenderDrawLine( renderer, p0.x, p0.y, p1.x, p1.y );
 }
