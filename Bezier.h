@@ -22,6 +22,8 @@ private:
 	SDL_Point FindPosition(float percent);
 	
 	SDL_Point points[precision+1];
+	SDL_Point outerLine[precision+1];
+	SDL_Point innerLine[precision+1];
 
 
 };
