@@ -12,11 +12,21 @@ Bezier::Bezier(const Vector2& p0, const Vector2& p1, const Vector2& p2, const Ve
 
 	// Generate curves based on desired smoothness
 	float t = 0;
+	// Angle of line
+	float angle = 0;
 
 	// Generate array of SDL_Point to use in rendering lines
 	for (int i = 0; i < CURVES + 1; i++)
 	{
 		points[i] = Vec2toSDLPoint(getPosAlongBezier(t));
+		
+		if(i > 0)
+			angle = atan2(points[i].y - points[i - 1].y, points[i].x - points[i - 1].x);
+
+		SDL_Log(std::to_string(angle * 180 / M_PI).c_str());
+
+		pointsOuter[i].x = points[i].x * cos(angle) - points[i].y * sin(angle);
+		pointsOuter[i].y = points[i].y * cos(angle) + points[i].x * sin(angle);
 
 		t += 1.0 / CURVES;
 	}
@@ -35,6 +45,9 @@ void Bezier::draw(SDL_Renderer *renderer) const
 {
 	for (int i = 0; i < CURVES; i++)
 	{
-		SDL_RenderDrawLine(renderer, points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+		SDL_SetRenderDrawColor(renderer, 50, 50, 50, 50);
+		SDL_RenderDrawLines(renderer, points, CURVES + 1);
+		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+		SDL_RenderDrawLines(renderer, pointsOuter, CURVES + 1);
 	}
 }

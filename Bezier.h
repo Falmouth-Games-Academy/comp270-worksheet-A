@@ -4,7 +4,7 @@
 #include <vector>
 
 // Number of curves to use when creating the bezier i.e. smoothness
-#define CURVES 20
+#define CURVES 3
 
 class Bezier
 {
@@ -33,6 +33,7 @@ private:
 
 	// Points forming the curve
 	SDL_Point points[CURVES + 1];
+	SDL_Point pointsOuter[CURVES + 1];
 
 	// Utility function for converting from Vector2 to SDL_Point
 	static SDL_Point Vec2toSDLPoint(const Vector2& in)
