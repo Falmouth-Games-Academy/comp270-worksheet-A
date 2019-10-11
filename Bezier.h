@@ -4,7 +4,7 @@
 #include <vector>
 
 // Number of curves to use when creating the bezier i.e. smoothness
-#define CURVES 3
+#define CURVES 20
 
 class Bezier
 {

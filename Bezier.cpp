@@ -25,11 +25,16 @@ Bezier::Bezier(const Vector2& p0, const Vector2& p1, const Vector2& p2, const Ve
 
 		SDL_Log(std::to_string(angle * 180 / M_PI).c_str());
 
-		pointsOuter[i].x = points[i].x * cos(angle) - points[i].y * sin(angle);
-		pointsOuter[i].y = points[i].y * cos(angle) + points[i].x * sin(angle);
+		pointsOuter[i].x = -20 * sin(angle) + points[i].x;
+		pointsOuter[i].y = 20 * cos(angle) + points[i].y;
 
 		t += 1.0 / CURVES;
 	}
+
+	angle = atan2(points[1].y - points[0].y, points[1].x - points[0].x);
+
+	pointsOuter[0].x = -20 * sin(angle) + points[0].x;
+	pointsOuter[0].y = 20 * cos(angle) + points[0].y;
 }
 
 Vector2 Bezier::getPosAlongBezier(float t)
