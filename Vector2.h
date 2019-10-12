@@ -38,6 +38,7 @@ public:
 		return sqrtf(x * x + y * y);
 	}
 
+	// Returns the vector scaled to fit within a unit vector
 	Vector2 normalized()
 	{
 		return Vector2(this->x / this->magnitude(), this->y / this->magnitude());
