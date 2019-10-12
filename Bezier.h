@@ -9,11 +9,16 @@ public:
 
 	void draw(SDL_Renderer *renderer) const;
 
-	Vector2 FindPFinal(float t, Vector2 p) const;
+	float getCurrentSegmentLength(Vector2 carPos, SDL_Renderer *renderer) const;
 
-	Vector2 FindTangent(float t, Vector2 tangent) const;
+	Vector2 findCurvePoint(float t, Vector2 p) const;
+
+	Vector2 findCurveTangent(float t, Vector2 tangent) const;
 
 private:
 	Vector2 p0, p1, p2, p3;
-	int segments = 20;
+	const int segments = 20;
+	const int approximateSegments = 1000;
 };
+
+float distance(Vector2 a, Vector2 b);
