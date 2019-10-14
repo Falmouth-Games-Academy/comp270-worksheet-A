@@ -11,8 +11,9 @@ public:
 
 private:
 
-	const int static BEZIER = 20;
+	const int static BEZIERSEGMENTS = 15;
 	Vector2 p0, p1, p2, p3;
-	Vector2 Points[BEZIER + 1];
-	Vector2 CalculateBezier (float t);
+	Vector2 Points[BEZIERSEGMENTS + 1];
+	Vector2 BezierCalculation (float t);
+
 };
