@@ -10,5 +10,9 @@ public:
 	void draw(SDL_Renderer *renderer) const;
 
 private:
+
+	const int static BEZIER = 20;
 	Vector2 p0, p1, p2, p3;
+	Vector2 Points[BEZIER + 1];
+	Vector2 CalculateBezier (float t);
 };
