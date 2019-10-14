@@ -20,7 +20,7 @@ void Bezier::draw(SDL_Renderer *renderer) const
 	for (int = 0; i < BEZIER = 1: i++)
 	{
 
-		int SDL_RenderDrawPoints(SDL_Renderer * renderer, int )
+		int SDL_RenderDrawPoints(SDL_Renderer * renderer, int)
 
 	}
 
