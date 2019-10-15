@@ -9,6 +9,7 @@ public:
 
 	void draw(SDL_Renderer *renderer) const;
 	Vector2 CalculateBezier(float t);
+	float calculateRotation(float t);
 private:
 	const static int CURVEYSAMPLES = 20;
 	Vector2 p0, p1, p2, p3;
