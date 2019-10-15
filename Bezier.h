@@ -15,6 +15,6 @@ private:
 
 	Vector2 p0, p1, p2, p3;
 
-	int curveCount = 20;
+	int curveCount = 200;
 
 };

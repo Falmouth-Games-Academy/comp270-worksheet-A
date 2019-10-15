@@ -10,22 +10,22 @@ void Bezier::draw(SDL_Renderer *renderer) const
 {
 	// TODO
 
+	float t = 0.0f;
+	float tt = 0.0f;
+
+	Vector2 point = Vector2();
+	Vector2 pointTwo = Vector2();
 
 
 	for ( int i = 0; i < curveCount; i++ )
 	{
-		float t = i / curveCount;
+		t = (float)i / curveCount;
+		point = pow( (1 - t), 3 ) * p0 + 3 * pow( (1 - t), 2 ) * t * p1 + 3 * (1 - t) * pow( t, 2 ) * p2 + pow( t, 3 ) * p3;
 
-
-		Vector2 voint = pow( (1 - t), 3 ) * p0 + 3 * pow( (1 - t), 2 ) * t * p1 + 3 * (1 - t) * pow( t, 2 ) * p2 + pow( t, 3 ) * p3;
-		SDL_Point point; point.x = voint.x; point.y = voint.y;
-
-		float tt = (i + 1) / curveCount;
-		Vector2 vointTwo = pow( (1 - tt), 3 ) * p0 + 3 * pow( (1 - tt), 2 ) * tt * p1 + 3 * (1 - tt) * pow( tt, 2 ) * p2 + pow( tt, 3 ) * p3;
-		SDL_Point pointTwo; pointTwo.x = vointTwo.x; pointTwo.y = vointTwo.y;
+		tt = ((float)i + 1) / curveCount;
+		pointTwo = pow( (1 - tt), 3 ) * p0 + 3 * pow( (1 - tt), 2 ) * tt * p1 + 3 * (1 - tt) * pow( tt, 2 ) * p2 + pow( tt, 3 ) * p3;
 
 		SDL_RenderDrawLine( renderer, point.x, point.y, pointTwo.x, pointTwo.y );
-
 
 	}
 
